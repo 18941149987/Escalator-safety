@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.generator.dao.SysDataDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.generator.entity.SysDataEntity" id="sysDataMap">
+        <result property="id" column="id"/>
+        <result property="shock" column="shock"/>
+        <result property="temperature" column="temperature"/>
+        <result property="flame" column="flame"/>
+        <result property="smok" column="smok"/>
+        <result property="pressure" column="pressure"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+
+</mapper>
