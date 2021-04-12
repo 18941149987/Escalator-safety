@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.R;
 import io.renren.modules.generator.entity.SysDataEntity;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 数据表
  *
@@ -15,6 +18,8 @@ import io.renren.modules.generator.entity.SysDataEntity;
 public interface SysDataService extends IService<SysDataEntity> {
 
     R url();
+
+    List<Map> data() throws Exception;
 
 }
 

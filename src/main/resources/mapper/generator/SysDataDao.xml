@@ -14,5 +14,13 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
+    <insert id="insert" keyProperty="id" keyColumn="true">
+        INSERT INTO sys_data(shock, temperature, flame, smok, pressure, create_time)
+        VALUES (#{param.shake}, #{param.temp}, #{param.fire}, #{param.mq2}, #{param.press}, #{param.create_time})
+    </insert>
+
+    <select id="data" resultType="java.util.Map">
+    SELECT * FROM sys_data
+    </select>
 
 </mapper>

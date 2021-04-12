@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -25,61 +27,23 @@ public class SysDataController {
     @Autowired
     private SysDataService sysDataService;
 
+    /**
+     * 获取OneNet云平台接口数据
+     * @return
+     */
     @GetMapping("/url")
     public R url() {
 
         return R.ok(sysDataService.url());
     }
 
-    @ApiOperation("测试")
+    // 查询数据用于展示
     @GetMapping("/data")
-    public R data() {
+    public R data() throws Exception{
 
-        return R.ok();
-    }
+        List<Map> list = sysDataService.data();
 
-    /**
-     * 信息
-     */
-    @RequestMapping("/info/{id}")
-    @RequiresPermissions("generator:sysdata:info")
-    public R info(@PathVariable("id") Integer id){
-		SysDataEntity sysData = sysDataService.getById(id);
-
-        return R.ok().put("sysData", sysData);
-    }
-
-    /**
-     * 保存
-     */
-    @RequestMapping("/save")
-    @RequiresPermissions("generator:sysdata:save")
-    public R save(@RequestBody SysDataEntity sysData){
-		sysDataService.save(sysData);
-
-        return R.ok();
-    }
-
-    /**
-     * 修改
-     */
-    @RequestMapping("/update")
-    @RequiresPermissions("generator:sysdata:update")
-    public R update(@RequestBody SysDataEntity sysData){
-		sysDataService.updateById(sysData);
-
-        return R.ok();
-    }
-
-    /**
-     * 删除
-     */
-    @RequestMapping("/delete")
-    @RequiresPermissions("generator:sysdata:delete")
-    public R delete(@RequestBody Integer[] ids){
-		sysDataService.removeByIds(Arrays.asList(ids));
-
-        return R.ok();
+        return R.ok(list);
     }
 
 }
