@@ -1,21 +1,14 @@
 package io.renren.modules.generator.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import io.renren.common.utils.R;
 import io.renren.modules.generator.entity.SysDataEntity;
 import io.renren.modules.generator.service.SysDataService;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 
 
 /**
@@ -26,22 +19,24 @@ import io.renren.common.utils.R;
  * @date 2021-04-09 15:14:11
  */
 @RestController
-@RequestMapping("generator/sysdata")
+@RequestMapping("/generator/sysdata")
 public class SysDataController {
+
     @Autowired
     private SysDataService sysDataService;
 
-    /**
-     * 列表
-     */
-    @RequestMapping("/list")
-    @RequiresPermissions("generator:sysdata:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = sysDataService.queryPage(params);
+    @GetMapping("/url")
+    public R url() {
 
-        return R.ok().put("page", page);
+        return R.ok(sysDataService.url());
     }
 
+    @ApiOperation("测试")
+    @GetMapping("/data")
+    public R data() {
+
+        return R.ok();
+    }
 
     /**
      * 信息

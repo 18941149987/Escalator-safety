@@ -1,10 +1,9 @@
 package io.renren.modules.generator.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import io.renren.common.utils.PageUtils;
-import io.renren.modules.generator.entity.SysDataEntity;
 
-import java.util.Map;
+import com.baomidou.mybatisplus.extension.service.IService;
+import io.renren.common.utils.R;
+import io.renren.modules.generator.entity.SysDataEntity;
 
 /**
  * 数据表
@@ -15,6 +14,7 @@ import java.util.Map;
  */
 public interface SysDataService extends IService<SysDataEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    R url();
+
 }
 

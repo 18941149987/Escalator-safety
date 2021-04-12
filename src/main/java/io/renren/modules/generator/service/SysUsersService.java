@@ -2,7 +2,7 @@ package io.renren.modules.generator.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.PageUtils;
-import io.renren.modules.generator.entity.SysUserEntity;
+import io.renren.modules.generator.entity.SysUsersEntity;
 
 import java.util.Map;
 
@@ -13,7 +13,7 @@ import java.util.Map;
  * @email sunlightcs@gmail.com
  * @date 2021-04-09 15:16:51
  */
-public interface SysUserService extends IService<SysUserEntity> {
+public interface SysUsersService extends IService<SysUsersEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 }
