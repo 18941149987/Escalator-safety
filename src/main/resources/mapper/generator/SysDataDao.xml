@@ -20,7 +20,15 @@
     </insert>
 
     <select id="data" resultType="java.util.Map">
-    SELECT * FROM sys_data
+        SELECT avg(shock) AS shock, avg(temperature) AS temperature, avg(flame) AS flame,
+               avg(smok) AS smok, avg(pressure) AS pressure, LEFT(create_time, 10) AS ctime
+        FROM sys_data
+        WHERE 1=1
+        AND LEFT(create_time, 10) IN
+        <foreach collection="date" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        GROUP BY LEFT(create_time, 10)
     </select>
 
 </mapper>

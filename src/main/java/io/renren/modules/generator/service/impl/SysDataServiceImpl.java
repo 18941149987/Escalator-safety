@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.modules.generator.dao.SysDataDao;
 import io.renren.modules.generator.entity.SysDataEntity;
 import io.renren.modules.generator.service.SysDataService;
+import io.renren.modules.generator.utils.DayUtil;
 import io.renren.modules.generator.utils.HttpClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -80,8 +81,10 @@ public class SysDataServiceImpl extends ServiceImpl<SysDataDao, SysDataEntity> i
 
 
     @Override
-    public List<Map> data() throws Exception{
+    public List<Map> data(){
 
-        return sysDataDao.data();
+        List<String> LastWeekDays = DayUtil.LastWeekDays(7);
+
+        return sysDataDao.data(LastWeekDays);
     }
 }

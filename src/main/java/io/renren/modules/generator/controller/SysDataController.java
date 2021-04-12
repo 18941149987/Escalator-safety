@@ -37,9 +37,12 @@ public class SysDataController {
         return R.ok(sysDataService.url());
     }
 
-    // 查询数据用于展示
+    /**
+     * 查询数据用于展示
+     * @return
+     */
     @GetMapping("/data")
-    public R data() throws Exception{
+    public R data(){
 
         List<Map> list = sysDataService.data();
 

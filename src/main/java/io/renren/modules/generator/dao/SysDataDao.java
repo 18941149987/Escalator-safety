@@ -20,6 +20,6 @@ public interface SysDataDao extends BaseMapper<SysDataEntity> {
 
     void insert(@Param("param") Map map);
 
-    List<Map> data();
+    List<Map> data(@Param("date") List<String> LastWeekDays);
 
 }
