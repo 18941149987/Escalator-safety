@@ -15,9 +15,9 @@ public class Task {
 	private SysDataService sysDataService;
 
 	/**
-	 * 每日维度统计
+	 * 每十分钟执行一次
 	 */
-	@Scheduled(cron = "0/10 * * * * *")
+	@Scheduled(cron = "0 */10 * * * ?")
 	public void url(){
 		sysDataService.url();
 	}
