@@ -81,10 +81,40 @@ public class SysDataServiceImpl extends ServiceImpl<SysDataDao, SysDataEntity> i
 
 
     @Override
-    public List<Map> data(){
+    public R data(){
 
+        // 组装返回数据格式
+        Map mapData = new HashMap();
+
+        // 获取近七天日期
         List<String> LastWeekDays = DayUtil.LastWeekDays(7);
+        // echars日期数组
+        List<String> dateList = new ArrayList<>();
+        List<String> smokList = new ArrayList<>();
+        List<String> shockList = new ArrayList<>();
+        List<String> temperatureList = new ArrayList<>();
+        List<String> pressureList = new ArrayList<>();
+        List<String> flameList = new ArrayList<>();
+        // 获取全部数据
+        List<Map> data = sysDataDao.data(LastWeekDays);
+        // 获取日期
+        for (Map map : data) {
+            dateList.add(Convert.toStr(map.get("ctime")));
+            smokList.add(Convert.toStr(map.get("smok")));
+            shockList.add(Convert.toStr(map.get("shock")));
+            temperatureList.add(Convert.toStr(map.get("temperature")));
+            pressureList.add(Convert.toStr(map.get("pressure")));
+            flameList.add(Convert.toStr(map.get("flame")));
+        }
 
-        return sysDataDao.data(LastWeekDays);
+//        mapData.put("data", data);
+        mapData.put("date", dateList);
+        mapData.put("smokList", smokList);
+        mapData.put("shockList", shockList);
+        mapData.put("temperatureList", temperatureList);
+        mapData.put("pressureList", pressureList);
+        mapData.put("flameList", flameList);
+
+        return R.ok().put("data", mapData);
     }
 }

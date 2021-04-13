@@ -44,9 +44,7 @@ public class SysDataController {
     @GetMapping("/data")
     public R data(){
 
-        List<Map> list = sysDataService.data();
-
-        return R.ok(list);
+        return R.ok(sysDataService.data());
     }
 
 }

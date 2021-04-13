@@ -19,7 +19,7 @@ public interface SysDataService extends IService<SysDataEntity> {
 
     R url();
 
-    List<Map> data();
+    R data();
 
 }
 
